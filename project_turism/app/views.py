@@ -1,0 +1,23 @@
+from django.shortcuts import render
+from django.views.generic import ListView, CreateView
+from rest_framework import viewsets
+from rest_framework.reverse import reverse_lazy
+
+from app.forms import PostForm
+from app.models import Post
+from app.serializers import PostSerializers
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all().order_by('title')
+    serializer_class = PostSerializers
+
+class HomePageView(ListView):
+    model = Post
+    template_name = 'index.html'
+
+class CreatePostView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'post.html'
+    success_url = reverse_lazy('index')
