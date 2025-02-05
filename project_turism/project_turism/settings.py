@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os.path
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 from django.conf.global_settings import STATIC_ROOT, MEDIA_ROOT
 
@@ -22,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-o6+tas7d7y67oe*r8hqozq1lwbj4d&99==pwxqdb0a!fs6+q^y'
+SECRET_KEY = os.getenv('S_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,6 +84,20 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    # 'postgresql': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'mydatabase',
+    #     'USER': os.getenv('FSTR_DB_LOGIN'),
+    #     'PASSWORD': os.getenv('FSTR_DB_PASS'),
+    #     'HOST': os.getenv('FSTR_DB_HOST'),
+    #     'PORT': os.getenv('FSTR_DB_PORT'),
+    # }
 }
 
 

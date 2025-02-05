@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 from rest_framework import viewsets
 from rest_framework.reverse import reverse_lazy
-
 from app.forms import PostForm
 from app.models import Post
 from app.serializers import PostSerializers

@@ -7,7 +7,13 @@
             <h1>Список всех постов</h1>
         </div>
         {% block content %}
-        {{ postlist }}
+        {% for post in postlist %}
+       <h3> Заголовок поста</h3>
+        {{ post.title }}
+        <h3>Содержание поста</h3>
+        <img src="{{MEDIA_URL}}{{ post.cover }}" />
+
+        {% endfor %}
         {% endblock %}
     </body>
 </html>
