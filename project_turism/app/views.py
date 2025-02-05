@@ -15,6 +15,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class HomePageView(ListView):
     model = Post
     template_name = 'index.html'
+    context_object_name = 'postlist'
 
 class CreatePostView(CreateView):
     model = Post
