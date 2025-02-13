@@ -1,19 +1,13 @@
-
 from django.contrib import admin
-from django.db import router
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
 from app.views import HomePageView, CreatePostView
-
 from rest_framework import routers
 from app import views
 
 router = routers.DefaultRouter()
 router.register(r'post', views.PostViewSet)
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),

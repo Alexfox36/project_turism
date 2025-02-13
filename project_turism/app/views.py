@@ -1,15 +1,14 @@
-from django.shortcuts import render
 from django.views.generic import ListView, CreateView
 from rest_framework import viewsets
 from rest_framework.reverse import reverse_lazy
 from app.forms import PostForm
 from app.models import Post
-from app.serializers import PostSerializers
+from app.serializers import PostSerializer
 
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('title')
-    serializer_class = PostSerializers
+    serializer_class = PostSerializer
 
 class HomePageView(ListView):
     model = Post
